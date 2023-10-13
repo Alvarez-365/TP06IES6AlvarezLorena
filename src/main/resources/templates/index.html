@@ -8,15 +8,43 @@
 <body>
     <div>
         <form th:object="${alumno}" method="post" action="/submitForm">
-            <!-- Suponiendo que 'alumno' es el nombre del atributo del modelo -->
+            
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" name="nombre" th:field="*{nombre}">
 
             <label for="apellido">Apellido:</label>
             <input type="text" id="apellido" name="apellido" th:field="*{apellido}">
+            
+            <label for="direccionBarrio">direccionBarrio:</label>
+            <input type="text" id="direccionBarrio" name="direccionBarrio" th:field="*{direccionBarrio}">
 
-            <!-- Agrega líneas similares para otros campos -->
+            <label for="direccionCale">direccionCalle:</label>
+            <input type="text" id="direccionCalle" name="direccionCalle" th:field="*{direccionCalle}">
+            
+            <label for="direccionNumero">direccionNumero:</label>
+            <input type="number" id="direccionNumero" name="direccionNumero" th:field="*{direccionNumero}">
 
+            <label for="direccionCiudad">direccionCiudad:</label>
+            <input type="text" id="direccionCiudad" name="direccionCiudad" th:field="*{direccionCiudad}">
+            
+            <label for="direccionCP">direccionCP:</label>
+            <input type="text" id="direccionCP" name="direccionCP" th:field="*{direccionCP}">
+
+            <label for="fechaNacimiento">fechaNacimiento:</label>
+            <input type="date" id="fechaNacimiento" " name="fechaNacimiento" th:field="*{fechaNacimiento}">
+            
+            <label for="DNI">DNI:</label>
+            <input type="text" id="DNI" name="DNI" th:field="*{DNI}">
+
+            <label for="Correo">correo:</label>
+            <input type="text" id="correo" name="correo" th:field="*{correo}">
+            
+            <label for="telefono">telefono:</label>
+            <input type="text" id="telefono" name="telefono" th:field="*{telefono}">
+
+            <label for="estado">estado:</label>
+            <input type="text" id="estado" name="destado" th:field="*{estado}">
+            
             <button type="submit">Enviar</button>
         </form>
     </div>
