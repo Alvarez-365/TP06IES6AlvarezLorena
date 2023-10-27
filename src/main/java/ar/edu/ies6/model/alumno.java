@@ -1,5 +1,8 @@
 package ar.edu.ies6.model;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
 import java.util.Date;
 
 public class alumno {
@@ -10,7 +13,7 @@ public class alumno {
 	private Integer direccionNumero;
 	private String direccionCiudad;
 	private String direccionCP;
-	private Date fechaNacimiento;
+	private LocalDate fechaNacimiento;
 	private String DNI;
 	private String correo;
 	private String telefono;
@@ -76,11 +79,11 @@ public void setDireccionCP(String direccionCP) {
 	this.direccionCP = direccionCP;
 }
 
-public Date getFechaNacimiento() {
+public LocalDate getFechaNacimiento() {
 	return fechaNacimiento;
 }
 
-public void setFechaNacimiento(Date fechaNacimiento) {
+public void setFechaNacimiento(LocalDate fechaNacimiento) {
 	this.fechaNacimiento = fechaNacimiento;
 }
 
@@ -88,7 +91,7 @@ public String getDNI() {
 	return DNI;
 }
 
-public void setDNI(String dNI) {
+public void setDNI(String dNI) { 
 	DNI = dNI;
 }
 
@@ -115,7 +118,15 @@ public boolean isEstado() {
 public void setEstado(boolean estado) {
 	this.estado = estado;
 }
-
+ 
+public Integer getEdad() {
+	// TODO calculo Edad
+	int edad = 0;
+	LocalDate fechaActual= LocalDate.now();
+	Period periodo= Period.between(fechaNacimiento, fechaActual);
+	edad= periodo.getYears();
+	return edad;
+}
 
 }
 
