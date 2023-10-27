@@ -4,7 +4,9 @@ package ar.edu.ies6.controller;
 import org.springframework.stereotype.Controller;
 	import org.springframework.ui.Model;
 	import org.springframework.web.bind.annotation.GetMapping;
-	import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.ies6.model.alumno;
 
@@ -27,9 +29,19 @@ import ar.edu.ies6.model.alumno;
     @PostMapping("/alumno/submitForm")
     public String procesarFormulario(alumno alumno) {
         // Lógica para procesar el formulario (guardar en la base de datos, etc.)
-        // Puedes redirigir a una página de confirmación u otra según sea necesario.
         return "confirmacion";
     }
+    
+    @PostMapping("/cargarAlumno")
+
+    public ModelAndView cargarAlumno (@ModelAttribute ("alumno") alumno alumno) {
+
+    ModelAndView modelView = new ModelAndView("listadoAlumnos");
+	return modelView; 
+    
+   
+    
+	}
     }
 	
 	

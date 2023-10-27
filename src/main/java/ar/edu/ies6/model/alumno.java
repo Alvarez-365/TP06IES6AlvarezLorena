@@ -2,8 +2,6 @@ package ar.edu.ies6.model;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.time.ZoneId;
-import java.util.Date;
 
 public class alumno {
 	private String nombre;

@@ -30,8 +30,7 @@
             <label for="direccionCP">direccionCP:</label>
             <input type="text" id="direccionCP" name="direccionCP" th:field="*{direccionCP}">
 
-            <label for="fechaNacimiento">fechaNacimiento:</label>
-            <input type="date" id="fechaNacimiento" " name="fechaNacimiento" th:field="*{fechaNacimiento}">
+            
             
             <label for="DNI">DNI:</label>
             <input type="text" id="DNI" name="DNI" th:field="*{DNI}">
@@ -43,8 +42,10 @@
             <input type="text" id="telefono" name="telefono" th:field="*{telefono}">
 
             <label for="estado">estado:</label>
-            <input type="text" id="estado" name="destado" th:field="*{estado}">
+            <input type="checkbox" id="estado"  th:field="*{estado}">
             
+            <input type 'subm," value="Cargar Alumno">
+
             <button type="submit">Enviar</button>
         </form>
     </div>
