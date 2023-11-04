@@ -1,55 +1,47 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns="http://www.thymeleaf.org">
-<head>
+ <head>
     <meta charset="UTF-8">
     <title>formulario</title>
-    <link rel="stylesheet" href="/alumno.css">
-</head>
-<body>
-    <div>
-        <form th:object="${alumno}" method="post" action="/submitForm">
+    <link  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>>
+ </head>
+ <body>
+    <div class="conteiner">
+		<h2>carga de ALUMNOS</h2>
+		<div>
+            <form th:object="${alumno}" method="post" action="/submitForm">
+				
+			  <label class="form-label">dni:</label>
+              <input class="form-control" type="number" id="dni" th:field="*{dni}" required><br>           
+              <label class="form-label">Nombre:</label>
+              <input class="form-control" type="text" id="nombre" th:field="*{nombre}"><br>
+              <label class="formlabel"> Apellido:</label>
+              <input class="form-control" type="text" id="apellido" th:field="*{apellido}"><br>        
+              <label class="form-label">>direccionBarrio:</label>
+              <input input class="form-control"type="text" id="direccionBarrio" th:field="*{direccionBarrio}"><br>
+              <label class="form-label"> >direccionCalle:</label>
+              <input input class="form-control"type="text" id="direccionCalle" th:field="*{direccionCalle}"><br>          
+              <label class="form-label">direccionNumero:</label>
+              <input input class="form-control"type="number" id="direccionNumero"  th:field="*{direccionNumero}"><br>
+              <label class="form-label">direccionCiudad:</label>
+              <input input class="form-control"type="text" id="direccionCiudad"  th:field="*{direccionCiudad}"><br>
+              <label class="form-label">direccionCP:</label>
+              <input input class="form-control"type="text" id="direccionCP"  th:field="*{direccionCP}"><br>
+              <label class="form-label">fechanacimiento>fechaNacimiento:</label>
+              <input class="form-control" type="date" id="fechaNacimiento" th:field="*{fechaNaciniento}">             
+              <label class="form-label">correo:</label>
+              <input input class="form-control"type="text" id="correo"  th:field="*{correo}"><br>
+              <label class="form-label">telefono:</label>
+              <input input class="form-control"type="text" id="telefono"  th:field="*{telefono}"><br>
+			  <label class="form-label">estado:</label>
+              <input input class="form-control"type="checkbox" id="estado"  th:field="*{estado}"><br>
             
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" th:field="*{nombre}">
-
-            <label for="apellido">Apellido:</label>
-            <input type="text" id="apellido" name="apellido" th:field="*{apellido}">
-            
-            <label for="direccionBarrio">direccionBarrio:</label>
-            <input type="text" id="direccionBarrio" name="direccionBarrio" th:field="*{direccionBarrio}">
-
-            <label for="direccionCale">direccionCalle:</label>
-            <input type="text" id="direccionCalle" name="direccionCalle" th:field="*{direccionCalle}">
-            
-            <label for="direccionNumero">direccionNumero:</label>
-            <input type="number" id="direccionNumero" name="direccionNumero" th:field="*{direccionNumero}">
-
-            <label for="direccionCiudad">direccionCiudad:</label>
-            <input type="text" id="direccionCiudad" name="direccionCiudad" th:field="*{direccionCiudad}">
-            
-            <label for="direccionCP">direccionCP:</label>
-            <input type="text" id="direccionCP" name="direccionCP" th:field="*{direccionCP}">
-
-            
-            
-            <label for="DNI">DNI:</label>
-            <input type="text" id="DNI" name="DNI" th:field="*{DNI}">
-
-            <label for="Correo">correo:</label>
-            <input type="text" id="correo" name="correo" th:field="*{correo}">
-            
-            <label for="telefono">telefono:</label>
-            <input type="text" id="telefono" name="telefono" th:field="*{telefono}">
-
-            <label for="estado">estado:</label>
-            <input type="checkbox" id="estado"  th:field="*{estado}">
-            
-            <input type 'subm," value="Cargar Alumno">
-
-            <button type="submit">Enviar</button>
-        </form>
+        	<button type="submit">Enviar</button>
+		    </form>
+		</div>
     </div>
-</body>
+ </body>
 </html>
 
 	

@@ -1,30 +1,42 @@
- <!DOCTYPE html>
- <html xmlns="http://www.thymeleaf.org" >
-
-  <head>
-		 <meta charset="ISO-8859-1">
-
- 	<title>Insert title here</title>
-
-  </head>
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org" >
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>>
+</head>
  <body>
-	 <div>
-		 <table>
+	 <div class="container">
+		 <table class="table table=striped" >
 			 <tr>
 				  <th>First name</th>
 				  <th>Last name</th>
+				  <th>FechaNacimiento</th>
+				  <th>Edad</th>
+				  <th>dni</th>
+				  <th>Edicion</th>
 			 </tr>
-			 <tr>
-				  <td>John</td>
-				  </td>Doe</td>
-			 </tr>
-			 <tr>
-				  <td>John</td>
-				  </td>Doe</td>
-			 </tr>
+			 <trzth:each="alu:$(listado)">
+				  <td> th:text="$(alu.nombre)"></td>
+				  <td>th:text="$(alu.apellido)"></td>
+				  <td>th:text="$(alu.direccionCalle)"></td>
+				  <td>th:text="$(alu.direccioNumero)"></td>
+				  <td>th:text="$(alu.direccioBarrio)"></td>
+				  <td>th:text="$(alu.direccioCiudad)"></td>
+				  <td>th:text="$(alu.getEdad())"></td>
+				  <td>th:text="$(alu.fechaNacimiento)"></td>
+				  <td>th:text="$(alu.dni)"></td>
+				  <td>th:text="$(alu.correo)"></td>
+				  <td>th:text="$(alu.telefono)"></td>
+				  <td><a type="button"class ="btn btn=Info"
+				  href="#"
+				  th:href="'@{/eliminarAlumno/'+${alu.dni}}"	  
+				  >ELIMINAR</a></td>	  
+			</tr>
 		 </table>
 	 </div>
 	 
  </body>
 
- </html>
+</html>

@@ -12,7 +12,7 @@ public class alumno {
 	private String direccionCiudad;
 	private String direccionCP;
 	private LocalDate fechaNacimiento;
-	private String DNI;
+	private Integer dni;
 	private String correo;
 	private String telefono;
 	private boolean estado;
@@ -85,12 +85,12 @@ public void setFechaNacimiento(LocalDate fechaNacimiento) {
 	this.fechaNacimiento = fechaNacimiento;
 }
 
-public String getDNI() {
-	return DNI;
+public Integer getdni() {
+	return dni;
 }
 
-public void setDNI(String dNI) { 
-	DNI = dNI;
+public void setdni(Integer dNI) { 
+	dni = dNI;
 }
 
 public String getCorreo() {
@@ -120,9 +120,11 @@ public void setEstado(boolean estado) {
 public Integer getEdad() {
 	// TODO calculo Edad
 	int edad = 0;
+	
 	LocalDate fechaActual= LocalDate.now();
 	Period periodo= Period.between(fechaNacimiento, fechaActual);
 	edad= periodo.getYears();
+	
 	return edad;
 }
 
