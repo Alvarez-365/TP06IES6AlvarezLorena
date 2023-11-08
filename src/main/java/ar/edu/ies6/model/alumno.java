@@ -3,18 +3,33 @@ package ar.edu.ies6.model;
 import java.time.LocalDate;
 import java.time.Period;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Id;
+
 public class alumno {
+	@Column 
 	private String nombre;
+	@Column
 	private String apellido;
+	@Column
 	private String direccionBarrio;
+	@Column
 	private String direccionCalle;
+	@Column
 	private Integer direccionNumero;
+	@Column
 	private String direccionCiudad;
+	@Column
 	private String direccionCP;
+	@Column
 	private LocalDate fechaNacimiento;
+	@Id
 	private Integer dni;
+	@Column
 	private String correo;
+	@Column
 	private String telefono;
+	@Column
 	private boolean estado;
 
 public alumno() {

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import ar.edu.ies6.model.alumno;
 
 
-
+import org.springframework.data.repository.CrudRepository;
 @Repository
 public interface AlumnoRepository extends CrudRepository <alumno, Integer > {
 

@@ -15,8 +15,8 @@ import ar.edu.ies6.util.ListadoAlumnos;
 
 	@Controller
 	public class alumnoController {
-		//mostrar el formulario
 		
+		//mostrar el formulario
 		@GetMapping("/formulario")
 		public ModelAndView cargarAlumno() {
 		
@@ -33,7 +33,6 @@ import ar.edu.ies6.util.ListadoAlumnos;
 		return modelView;
         }
 		// procesar los datos del formulario
-		
         @PostMapping("/alumno/submitForm")
         public String procesarFormulario(alumno alumno) {
         // Lógica para procesar el formulario (guardar en la base de datos, etc.)
@@ -46,11 +45,9 @@ import ar.edu.ies6.util.ListadoAlumnos;
     	//TODO guardar al alumno en una list
     	ListadoAlumnos.getListado().add(alumno);
     	
-        // cargar al alumno al array list
-        
+        // cargar al alumno al array list 
         ModelAndView modelView = new ModelAndView("listadoAlumno");
     
-     
 		//TODO enviar el listado a la tabla
         modelView.addObject("listado",ListadoAlumnos.getListado());
          return modelView;
@@ -59,11 +56,14 @@ import ar.edu.ies6.util.ListadoAlumnos;
 	  // metodo para eliminar un registro
        @GetMapping("/eliminarAlumno/{dni}") 
 	   public ModelAndView eliminarAlumno(@PathVariable Integer dni) {
-    	  // System.out.printlh("aaaaaa");
+    	  
     	     //eliminarUnProducto (id);
     	   for (int i=0; i<ListadoAlumnos.getListado().size();i++) {
+    		// System.out.printlh("aaaaaa"dni);
     		   if (ListadoAlumnos.getListado().get(i).getdni().equals(dni));{
+    			   //ListadoAlumnos.getListado().get(i).setEstado(false);
     			   ListadoAlumnos.getListado().remove(i);
+    			   //System.out.printlh{"bbbbbbbb"+ListadoAlumnos.getListado().size()};
     		   }
     	   }
     	      ModelAndView modelView = new ModelAndView("listadoAlumnos");
@@ -71,6 +71,14 @@ import ar.edu.ies6.util.ListadoAlumnos;
     	   
     	   return modelView;
     }
+       @PostMapping("/mostrarListado")
+       public ModelAndView mostrarListado() {
+    	   
+    	   ModelAndView modelView = new ModelAndView("listadoAlumnos");
+    	    modelView.addObject("listado", ListadoAlumnos.getListado());
+    	    return modelView;
+    	}
+       
     }
 	
 	
