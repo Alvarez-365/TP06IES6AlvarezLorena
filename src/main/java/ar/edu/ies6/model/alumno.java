@@ -3,9 +3,15 @@ package ar.edu.ies6.model;
 import java.time.LocalDate;
 import java.time.Period;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Id;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+import org.springframework.stereotype.Component;
+
+
+@Entity
+@Component
 public class alumno {
 	@Column 
 	private String nombre;

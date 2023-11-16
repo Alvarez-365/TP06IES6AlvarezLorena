@@ -17,27 +17,28 @@
 				  <th>dni</th>
 				  <th>Edicion</th>
 			 </tr>
-			 <trzth:each="alu:$(listado)">
-				  <td> th:text="$(alu.nombre)"></td>
-				  <td>th:text="$(alu.apellido)"></td>
-				  <td>th:text="$(alu.direccionCalle)"></td>
-				  <td>th:text="$(alu.direccioNumero)"></td>
-				  <td>th:text="$(alu.direccioBarrio)"></td>
-				  <td>th:text="$(alu.direccioCiudad)"></td>
-				  <td>th:text="$(alu.getEdad())"></td>
-				  <td>th:text="$(alu.fechaNacimiento)"></td>
-				  <td>th:text="$(alu.dni)"></td>
-				  <td>th:text="$(alu.correo)"></td>
-				  <td>th:text="$(alu.telefono)"></td>
+			 <trzth:each="doc:$(listado)">
+				  <td> th:text="$(doc.nombre)"></td>
+				  <td>th:text="$(doc.apellido)"></td>
+				  <td>th:text="$(doc.direccionCalle)"></td>
+				  <td>th:text="$(doc.direccioNumero)"></td>
+				  <td>th:text="$(doc.direccioBarrio)"></td>
+				  <td>th:text="$(doc.direccioCiudad)"></td>
+				  <td>th:text="$(doc.getEdad())"></td>
+				  <td>th:text="$(doc.fechaNacimiento)"></td>
+				  <td>th:text="$(doc.dni)"></td>
+				  <td>th:text="$(doc.correo)"></td>
+				  <td>th:text="$(doc.telefono)"></td>
 				  <td><a type="button"class ="btn btn=Info"
 				  href="#"
-				  th:href="'@{/eliminarAlumno/'+${alu.dni}}"	  
+				  th:href="'@{/eliminarDocente/'+${doc.dni}}"	  
 				  >ELIMINAR</a></td>
-				  <td><a type="button"class ="btn btn=Info"
+				   <td><a type="button"class ="btn btn=Info"
 				  href="#"
-				  th:href="'@{/modificarAlumno/'+${alu.dni}}"	  
-				  >MODIFICAR</a></td>	  
+				  th:href="'@{/modificarDocente/'+${doc.dni}}"	  
+				  >MODIFICAR</a></td>	  	  
 			</tr>
+			
 		 </table>
 	 </div>
 	 
