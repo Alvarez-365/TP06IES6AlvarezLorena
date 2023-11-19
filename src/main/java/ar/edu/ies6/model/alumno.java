@@ -3,11 +3,11 @@ package ar.edu.ies6.model;
 import java.time.LocalDate;
 import java.time.Period;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
 import org.springframework.stereotype.Component;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 
 @Entity

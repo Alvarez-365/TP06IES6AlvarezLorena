@@ -1,8 +1,6 @@
 package ar.edu.ies6.controller;
 	
-
-import java.time.LocalDate;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -10,21 +8,28 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import ar.edu.ies6.model.alumno;
+import ar.edu.ies6.service.AlumnoService;
 import ar.edu.ies6.util.ListadoAlumnos;
 
 
 	@Controller
 	public class alumnoController {
+		@Autowired
+		alumno alu;
+		@Autowired
+		AlumnoService alumnoService;
+		
+	
 		
 		//mostrar el formulario
 		@GetMapping("/formulario")
 		public ModelAndView cargarAlumno() {
 		
-			alumno alu = new alumno();
+			//alumno alu = new alumno();
 
-			alu.setFechaNacimiento(LocalDate.parse("2000, 2, 18"));
+			//alu.setFechaNacimiento(LocalDate.parse("2000, 2, 18"));
 			
-			System.out.println("edad: "+ alu.getEdad());
+			//System.out.println("edad: "+ alu.getEdad());
 		
 			//mandar el objeto a la vista 
         ModelAndView modelView= new ModelAndView ("index");
@@ -71,15 +76,31 @@ import ar.edu.ies6.util.ListadoAlumnos;
     	   
     	   return modelView;
     }
+       //metodo para mostrar listado
        @PostMapping("/mostrarListado")
-       public ModelAndView mostrarListado() {
+       public ModelAndView mostrarAlumno() {
     	   
-    	   ModelAndView modelView = new ModelAndView("listadoAlumnos");
-    	    modelView.addObject("listado", ListadoAlumnos.getListado());
-    	    return modelView;
+    	   ModelAndView listado = new ModelAndView("listadoAlumnos");
+    	    listado.addObject("listado", ListadoAlumnos.getListado());
+    	    return listado;
     	}
+       //metodo para modificar un registro 
+       @GetMapping("/modificarAlumno/{dni}") 
+	   public ModelAndView modificarAlumno(@PathVariable Integer dni) throws Exception {
+    	   ModelAndView modificarAlumno = new ModelAndView("index");
+    	   modificarAlumno.addObject("nuevoAlumno", alumnoService.encontrarUnAlumno(dni));
+    	   return modificarAlumno;
+       }
        
-    }
+       @PostMapping("/modificarAlumno")
+       public ModelAndView modificarUnAlumno(@ModelAttribute("alumno")alumno alumno) {
+    	   ModelAndView modelView = new ModelAndView("listadoAlumno");
+    	   
+    	   modelView.addObject("listado", alumnoService.buscarTodosAlumnos());
+    	   return modelView;
+       }
+        
+	}
 	
 	
 	

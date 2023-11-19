@@ -1,25 +1,31 @@
 package ar.edu.ies6.controller;
-	import java.time.LocalDate;
-	import org.springframework.stereotype.Controller;
-	import org.springframework.web.bind.annotation.GetMapping;
-	import org.springframework.web.bind.annotation.ModelAttribute;
-	import org.springframework.web.bind.annotation.PostMapping;
-	import org.springframework.web.servlet.ModelAndView;
-	import ar.edu.ies6.model.docente;
+	
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
+import ar.edu.ies6.model.docente;
+import ar.edu.ies6.service.DocenteService;
 import ar.edu.ies6.util.ListadoDocente;
-	@Controller
+	
+@Controller
 		public class docenteController {
 			
-			//mostrar el formulario
-			@GetMapping("/formulario")
-			public ModelAndView cargarDocente() {
 			
-				docente doc = new docente();
-
-				doc.setFechaNacimiento(LocalDate.parse("2000, 2, 18"));
+				@Autowired 
+				docente doc;
+				@Autowired
+				DocenteService docenteService;
 				
-				System.out.println("edad: "+ doc.getEdad());
-			
+				
+				//mostrar el formulario
+				@GetMapping("/formulario")
+				public ModelAndView cargarDocente() {
+				
+					
 				//mandar el objeto a la vista 
 	        ModelAndView modelView= new ModelAndView ("index");
 	        
@@ -46,6 +52,47 @@ import ar.edu.ies6.util.ListadoDocente;
 	        modelView.addObject("listado",ListadoDocente.getListado());
 	         return modelView;
 	       }
-	       
-
-}
+	  		 
+	 	  // metodo para eliminar un registro
+	        @GetMapping("/eliminarDocente/{dni}") 
+	 	   public ModelAndView eliminarDocente(@PathVariable Integer dni) {
+	     	  
+	     	     //eliminarUnProducto (id);
+	     	   for (int i=0; i<ListadoDocente.getListado().size();i++) {
+	     		// System.out.printlh("aaaaaa"dni);
+	     		   if (ListadoDocente.getListado().get(i).getdni().equals(dni));{
+	     			   //ListadoDocente.getListado().get(i).setEstado(false);
+	     			   ListadoDocente.getListado().remove(i);
+	     			   //System.out.printlh{"bbbbbbbb"+ListadoDocente.getListado().size()};
+	     		   }
+	     	   }
+	     	      ModelAndView modelView = new ModelAndView("listadoDocente");
+	     	   modelView.addObject("listado",ListadoDocente.getListado());
+	     	   
+	     	   return modelView;
+	     }
+	        //metodo para mostrar listado
+	        @PostMapping("/mostrarListado")
+	        public ModelAndView mostrarDocente() {
+	     	   
+	     	   ModelAndView listado = new ModelAndView("listadoDocente");
+	     	    listado.addObject("listado", ListadoDocente.getListado());
+	     	    return listado;
+	     	}
+	        //metodo para modificar un registro 
+	        @GetMapping("/modificarDocente/{dni}") 
+	 	   public ModelAndView modificarDocente(@PathVariable Integer dni) throws Exception {
+	     	   ModelAndView modificarDocente = new ModelAndView("index");
+	     	   modificarDocente.addObject("nuevoDocente",docenteService.encontrarUnDocente(dni));
+	     	   return modificarDocente;
+	        }
+	        
+	        @PostMapping("/modificarDocente")
+	        public ModelAndView modificarUnDocente(@ModelAttribute("docente")docente docente) {
+	     	   ModelAndView modelView = new ModelAndView("listadoDocente");
+	     	   
+	     	   modelView.addObject("listado",docenteService.buscarTodosDocente());
+	     	   return modelView;
+	        }
+	         
+	 	}
